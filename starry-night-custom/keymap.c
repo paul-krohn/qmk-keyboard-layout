@@ -56,13 +56,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [1] = LAYOUT_60_ansi(
         KC_ESC,    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,   KC_F12,  KC_DEL, \
-        KC_TRNS,   KC_HOME,  KC_UP,    KC_PGUP,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_PSCR, KC_SLCK, KC_PAUS, KC_UP,    KC_TRNS,          KC_INS, \
+        KC_TRNS,   KC_HOME,  KC_UP,    KC_PGUP,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_PSCR, KC_SLCK, KC_MEDIA_PLAY_PAUSE, KC_UP,    KC_TRNS,          KC_INS, \
         KC_TRNS,   KC_LEFT,  KC_DOWN,  KC_RIGHT, KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_HOME, KC_PGUP, KC_LEFT, KC_RIGHT,          KC_TRNS,          \
         KC_TRNS,   KC_END,   KC_TRNS,  KC_PGDN,  KC_TRNS,  KC_VOLD,   KC_VOLU, KC_MUTE, KC_END,  KC_PGDN,  KC_DOWN,           KC_TRNS,  \
         KC_TRNS,   KC_TRNS,  KC_TRNS,            KC_TRNS,                                                           KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS),
-  /* third layer is for window manager keys and may appear hack-ish to the untrined eye; but is all transparent for the moment */
+  /* third layer is for "Mac" keys and window manager keys; see README.md for details */
     [2] = LAYOUT_60_ansi(
-         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+         /* There are a few keys that can be made more Mac-like: brightness up/down (f1/f2), media pervious (f7), play/pause (f8), and media next (f9)
+            as well as volume controns mute (f10), down (f11) and up (f12). mission control (f3) and launchpad (f4) appear un-mappable, and the keyboard
+            brightness keys not pointful on an unlit keyboard. */
+         KC_TRNS,  KC_BRMD, KC_BRMU, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, KC_POWER, \
          KC_TRNS,  KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18, KC_F19, KC_F20, KC_KP_SLASH, KC_KP_ASTERISK, KC_TRNS, KC_TRNS, KC_TRNS, \
          KC_TRNS,  KC_KP_MINUS, KC_KP_PLUS, KC_KP_ENTER, KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_4, KC_KP_5, KC_KP_6, KC_TRNS, KC_TRNS, KC_TRNS, \
          KC_TRNS,  KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_0, KC_KP_DOT, KC_KP_EQUAL, KC_KP_COMMA, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
