@@ -8,7 +8,9 @@ enum alt_keycodes {
     DBG_KBD,               //DEBUG Toggle Keyboard Prints
     DBG_MOU,               //DEBUG Toggle Mouse Prints
     MD_BOOT,               //Restart into bootloader after hold timeout
+    M_ENROLL,              // start personal custom key codes
 };
+
 
 keymap_config_t keymap_config;
 
@@ -32,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           as well as volume controls mute (f10), down (f11) and up (f12). mission control (f3) and launchpad (f4) appear un-mappable, and the keyboard
           brightness keys are in layer 1 as shipped. */
        _______,  KC_BRMD, KC_BRMU, _______, _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, KC_POWER, _______, \
-       _______,  KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18, KC_F19, KC_F20, KC_KP_SLASH, KC_KP_ASTERISK, _______, _______, _______, _______, \
+       _______,  KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18, KC_F19, M_ENROLL, KC_KP_SLASH, KC_KP_ASTERISK, _______, _______, _______, _______, \
        _______,  KC_KP_MINUS, KC_KP_PLUS, KC_KP_ENTER, KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_4, KC_KP_5, KC_KP_6, _______, _______, _______, _______, \
        _______,  KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_0, KC_KP_DOT, KC_KP_EQUAL, KC_KP_COMMA, _______, _______, _______, _______, _______, _______, \
        _______, _______, _______,                            _______,                              _______, _______, _______, _______, _______ \
@@ -101,6 +103,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (timer_elapsed32(key_timer) >= 500) {
                     reset_keyboard();
                 }
+            }
+            return false;
+        case M_ENROLL:
+            if (record->event.pressed) {
+                SEND_STRING("I enroll 1 csr");
+            } else {
             }
             return false;
         case RGB_TOG:
