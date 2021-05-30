@@ -52,6 +52,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
+  rgb_matrix_set_flags(LED_FLAG_NONE);
+  rgb_matrix_disable();
 };
 
 // Runs constantly in the background, in a loop.
@@ -111,6 +113,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
             }
             return false;
+        case KC_CAPS:
+            if (record->event.pressed) {
+              switch (rgb_matrix_get_flags()) {
+                case LED_FLAG_NONE: {
+                    rgb_matrix_set_flags(LED_FLAG_KEYLIGHT);
+                    rgb_matrix_enable_noeeprom();
+                  }
+                  break;
+                default: {
+                    rgb_matrix_set_flags(LED_FLAG_NONE);
+                    rgb_matrix_disable_noeeprom();
+                  }
+                  break;
+              }
+            } else {
+            }
+            return true;
         case RGB_TOG:
             if (record->event.pressed) {
               switch (rgb_matrix_get_flags()) {
