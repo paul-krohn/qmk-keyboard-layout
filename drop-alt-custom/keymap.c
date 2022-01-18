@@ -52,7 +52,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
-  rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+  // for $reasons, the macro/constant meaning "solid" can't be included? so `2` is hard-coded here.
+  rgblight_mode(2);
   rgblight_sethsv(HSV_GOLD);
   rgb_matrix_set_flags(LED_FLAG_NONE);
   rgb_matrix_disable();
